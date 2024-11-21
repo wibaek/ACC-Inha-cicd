@@ -61,5 +61,5 @@ jobs:
           key: ${{ secrets.SSH_KEY }}
           script: |
             aws ecr get-login-password --region ap-northeast-2 | sudo docker login --username AWS --password-stdin ${{ secrets.ECR_URI }} && sudo docker pull ${{ secrets.ECR_URI }}:${{ github.sha }}
-            sudo docker run -d --rm -p 8080:8000 ${{ secrets.ECR_URI }}:${{ github.sha }}
+            sudo docker run -d --rm -p 80:8000 ${{ secrets.ECR_URI }}:${{ github.sha }}
           
